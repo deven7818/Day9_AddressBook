@@ -14,7 +14,7 @@ public class App {
 		person = new ArrayList<ContactsUc1>();
 	}
 
-	public void addPerson() {
+	public ContactsUc1 addPerson() {
 		System.out.println("Enter Fisrt Name ");
 		String fname = scan.next();
 
@@ -48,8 +48,32 @@ public class App {
 		 * printing contact
 		 */
 		System.out.println(contact);
+		return contact;
 	}
-
+	
+	/*
+	 * Edit Method to edit person Name
+	 */
+	public void editName() {
+		System.out.println("Enter Name to Edit");
+		String edit = scan.next();
+		App app = new App();
+		
+		for(int i=0; i< person.size();i++) {
+			ContactsUc1 name = (ContactsUc1) person.get(i);
+			if(edit.equals(name.getFirstName())) {
+				System.out.println(name);
+				name = app.addPerson();
+				for(int j=0; j<person.size(); j++) {
+					person.set(j, name);
+				}
+			}
+			else {
+				System.out.println("Given information is Not present");
+			}
+		}
+	}
+	
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address Book Program..!");
 
@@ -68,7 +92,7 @@ public class App {
 
 		App ap = new App();
 		ap.addPerson();
-
+		ap.editName();
 	}
 
 }
