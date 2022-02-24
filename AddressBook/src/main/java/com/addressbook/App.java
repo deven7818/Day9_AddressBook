@@ -74,6 +74,26 @@ public class App {
 		}
 	}
 	
+	/*
+	 * Delete person Using name
+	 */
+	public void delete() {
+		System.out.println("Enter name to Delete");
+		String del = scan.next();
+		
+		for (int i=0; i< person.size(); i++) {
+			ContactsUc1 name = (ContactsUc1)person.get(i);
+			if(del.equals(name.getFirstName())) {
+				System.out.println(name);
+				person.remove(i);
+				System.out.println("Contact Deleted");
+			}
+			else {
+				System.out.println("Contact not found");
+			}
+		}
+	}
+	
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address Book Program..!");
 
@@ -93,6 +113,7 @@ public class App {
 		App ap = new App();
 		ap.addPerson();
 		ap.editName();
+		ap.delete();
 	}
 
 }
